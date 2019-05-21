@@ -2,17 +2,59 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
   <display-name>Archetype Created Web Application</display-name>
+
+  <context-param>
+    <param-name>language</param-name>
+    <param-value>en</param-value>
+  </context-param>
 
   <servlet>
     <servlet-name>HelloServlet</servlet-name>
     <servlet-class>com.epam.web.HelloServlet</servlet-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/servlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ServletForward</servlet-name>
+    <servlet-class>com.epam.web.ServletForward</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ServletForward</servlet-name>
+    <url-pattern>/servletForward</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ServletInclude</servlet-name>
+    <servlet-class>com.epam.web.ServletInclude</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ServletInclude</servlet-name>
+    <url-pattern>/servletInclude</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>StudentServlet</servlet-name>
+    <servlet-class>com.epam.web.StudentServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>StudentServlet</servlet-name>
+    <url-pattern>/students</url-pattern>
   </servlet-mapping>
 
   <error-page>
