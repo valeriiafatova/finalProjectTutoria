@@ -8,7 +8,10 @@ import java.io.IOException;
 
 public class HelloServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print("Hello from server");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute("greeting", "Hello from server!");
+        request.getRequestDispatcher("jsp/hello.jsp")
+                .forward(request, response);
     }
 }
