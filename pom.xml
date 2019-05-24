@@ -106,6 +106,13 @@
             <port>8080</port>
             <path>/</path>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>javax.servlet</groupId>
+              <artifactId>jstl</artifactId>
+              <version>1.2</version>
+            </dependency>
+          </dependencies>
         </plugin>
 
       </plugins>
