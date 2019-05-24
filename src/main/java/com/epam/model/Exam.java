@@ -1,25 +1,29 @@
 package com.epam.model;
 
+import com.epam.enums.Score;
+
 import java.time.LocalDateTime;
 
-public class Consultation {
+public class Exam {
     private int id;
     private Teacher teacher;
     private Student student;
     private LocalDateTime date;
+    private Score score;
 
-    public Consultation(int id, Teacher teacher, Student student, LocalDateTime date) {
+    public Exam(int id, Teacher teacher, Student student, LocalDateTime date, Score score) {
         this.id = id;
         this.teacher = teacher;
         this.student = student;
         this.date = date;
+        this.score = score;
     }
 
-    public Consultation(int id) {
+    public Exam(int id) {
         this.id = id;
     }
 
-    public Consultation() {
+    public Exam() {
     }
 
     public int getId() {
@@ -54,12 +58,20 @@ public class Consultation {
         this.date = date;
     }
 
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Consultation that = (Consultation) o;
+        Exam that = (Exam) o;
 
         if (id != that.id) return false;
         if (teacher != null ? !teacher.equals(that.teacher) : that.teacher != null) return false;
@@ -78,7 +90,7 @@ public class Consultation {
 
     @Override
     public String toString() {
-        return "Consultation{" +
+        return "Exam{" +
                 "id=" + id +
                 ", teacher=" + teacher +
                 ", student=" + student +

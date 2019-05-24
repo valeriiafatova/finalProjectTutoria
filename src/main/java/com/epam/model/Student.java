@@ -7,7 +7,7 @@ public class Student {
     private String name;
     private int age;
     private String phone;
-    private List<Consultation> consultations;
+    private List<Exam> exams;
 
     public Student(int id, String name, int age, String phone) {
         this.id = id;
@@ -55,12 +55,12 @@ public class Student {
         this.phone = phone;
     }
 
-    public List<Consultation> getConsultations() {
-        return consultations;
+    public List<Exam> getExams() {
+        return exams;
     }
 
-    public void setConsultations(List<Consultation> consultations) {
-        this.consultations = consultations;
+    public void setExams(List<Exam> exams) {
+        this.exams = exams;
     }
 
     @Override

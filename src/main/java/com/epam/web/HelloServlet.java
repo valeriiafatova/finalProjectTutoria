@@ -1,14 +1,14 @@
 package com.epam.web;
 
-import com.epam.StudentDao;
-import com.epam.model.Student;
+import com.epam.dao.StudentDao;
+import com.epam.command.Command;
+import com.epam.command.GenerateStudentsReport;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class HelloServlet extends HttpServlet {
 
@@ -17,10 +17,11 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Student> students = getStudentDao().getStudents();
+        Command command = new GenerateStudentsReport();
 
-        request.setAttribute("students", students);
-        request.getRequestDispatcher("jsp/students.jsp")
+        String page = command.execute(request);
+
+        request.getRequestDispatcher(page)
                 .forward(request, response);
     }
 

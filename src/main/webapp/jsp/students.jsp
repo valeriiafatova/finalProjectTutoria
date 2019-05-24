@@ -13,17 +13,15 @@
 <body>
      <table>
         <tr>
-        <th><fmt:message key="student.id" /></th>
         <th><fmt:message key="student.name" /></th>
-        <th><fmt:message key="student.age" /></th>
         <th><fmt:message key="student.phone" /></th>
+        <th><fmt:message key="student.accepted" /></th>
         </tr>
          <c:forEach items="${students}" var="student">
         <tr>
-          <td><c:out value="${student.id}"/></td>
           <td><c:out value="${student.name}"/></td>
-          <td><c:out value="${student.age}"/></td>
           <td><c:out value="${student.phone}"/></td>
+          <td><c:out value="${student.accepted}"/></td>
         </tr>
        </c:forEach>
      </table>
