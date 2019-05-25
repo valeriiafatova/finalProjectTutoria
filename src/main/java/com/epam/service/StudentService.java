@@ -2,14 +2,15 @@ package com.epam.service;
 
 import com.epam.dao.StudentDao;
 import com.epam.dao.ExamDao;
+import com.epam.factory.DaoFactory;
 import com.epam.model.Exam;
 import com.epam.model.Student;
 
 import java.util.List;
 
 public class StudentService {
-    private StudentDao studentDao = new StudentDao();
-    private ExamDao examDao = new ExamDao();
+    private StudentDao studentDao = DaoFactory.getStudentDao();
+    private ExamDao examDao = DaoFactory.getExamDao();
 
     public List<Student> getAllStudentsWithExams() {
 
@@ -20,5 +21,13 @@ public class StudentService {
                 });
 
         return students;
+    }
+
+    public void setStudentDao(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
+
+    public void setExamDao(ExamDao examDao) {
+        this.examDao = examDao;
     }
 }
