@@ -22,9 +22,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class HelloServletTest {
+public class DispatcherServletTest {
    //@InjectMocks
-    private HelloServlet helloServlet;
+    private DispatcherServlet dispatcherServlet;
     @Mock
     private StudentDao studentDao;
     @Mock
@@ -37,13 +37,13 @@ public class HelloServletTest {
 
     @Before
     public void setUp(){
-        helloServlet =  new HelloServlet();
-        helloServlet.setStudentDao(studentDao);
+        dispatcherServlet =  new DispatcherServlet();
+        //dispatcherServlet.setStudentDao(studentDao);
         students = new ArrayList<>();
         students.add(new Student(1, "Valeriia", 23, "11122333"));
         when(studentDao.getStudents())
                 .thenReturn(students);
-        when(request.getRequestDispatcher("jsp/students.jsp")).thenReturn(requestDispatcher);
+        when(request.getRequestDispatcher("jsp/students.html")).thenReturn(requestDispatcher);
         when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
     }
 
@@ -55,7 +55,7 @@ public class HelloServletTest {
     @Test
     public void shouldSetStudentToRequest() throws ServletException, IOException {
 
-        helloServlet.doGet(request, response);
+        dispatcherServlet.doGet(request, response);
 
         verify(studentDao).getStudents();
         verify(request, times(1))

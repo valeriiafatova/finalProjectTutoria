@@ -1,6 +1,7 @@
 package com.epam.facade;
 
 import com.epam.dto.StudentDTO;
+import com.epam.factory.ServiceFactory;
 import com.epam.model.Student;
 import com.epam.service.StudentService;
 
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GenerateStudentReportFacade {
-    private StudentService studentService = new StudentService();
+    private StudentService studentService = ServiceFactory.getStudentService();
 
 
     public List<StudentDTO> getAllStudents() {
@@ -32,5 +33,9 @@ public class GenerateStudentReportFacade {
                 .stream()
                 .filter(exam -> exam.getScore().getScoreValue() > 3)
                 .count() > 1;
+    }
+
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
     }
 }

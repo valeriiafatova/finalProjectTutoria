@@ -30,8 +30,10 @@ public class DBCPDataSource {
         } catch (SQLException e) {
             LOG.error("Some problem was occurred while getting connection to BD \n" + e);
         }
-        return connection;    }
+        return connection;
+    }
 
-    private DBCPDataSource(){}
+    private DBCPDataSource() {
+    }
 
 }

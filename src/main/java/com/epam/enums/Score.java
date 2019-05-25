@@ -9,7 +9,7 @@ public enum Score {
         this.score = score;
     }
 
-    public int getScoreValue(){
+    public int getScoreValue() {
         return this.score;
     }
 }
