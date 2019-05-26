@@ -9,8 +9,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; utf-8">
         <title>Insert title here</title>
-    </head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
+            </head>
     <body>
+        <c:set var="contextPath" scope="request" value="${pageContext.request.contextPath}"/>
+
+        <c:import url="/resources/components/navigation.html"/>
         <table>
             <tr>
                 <th>
@@ -37,5 +42,7 @@
                 </tr>
             </c:forEach>
         </table>
-    </body>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+     </body>
 </html>

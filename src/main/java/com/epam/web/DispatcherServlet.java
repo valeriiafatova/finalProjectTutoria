@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class DispatcherServlet extends HttpServlet {
 
-    private static final String JSP_PATH = "/jsp/%s.jsp";
+    private static final String JSP_PATH = "/jsp/%s.html";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
