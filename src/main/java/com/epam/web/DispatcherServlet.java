@@ -11,19 +11,30 @@ import java.io.IOException;
 
 public class DispatcherServlet extends HttpServlet {
 
-    private static final String JSP_PATH = "/WEB-INF/jsp/%s.jsp";
+    private static final String JSP_PATH = "/jsp/%s.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getRequestURI()
-                .substring(request.getContextPath().length());
+                .substring(request.getRequestURI().lastIndexOf("/") + 1);
 
         Command command = CommandFactory.getCommand(action);
 
-        String page = command.execute(request);
+        String page = command.execute(request, response);
 
-        request.getRequestDispatcher(String.format(JSP_PATH, page))
-                .forward(request, response);
+        if (!page.isEmpty()) {
+            request.getRequestDispatcher(String.format(JSP_PATH, page))
+                    .forward(request, response);
+        }
     }
 }

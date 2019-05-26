@@ -43,7 +43,7 @@ public class DispatcherServletTest {
         students.add(new Student(1, "Valeriia", 23, "11122333"));
         when(studentDao.getStudents())
                 .thenReturn(students);
-        when(request.getRequestDispatcher("jsp/students.html")).thenReturn(requestDispatcher);
+        when(request.getRequestDispatcher("jsp/students.jsp")).thenReturn(requestDispatcher);
         when(request.getRequestDispatcher(anyString())).thenReturn(requestDispatcher);
     }
 
