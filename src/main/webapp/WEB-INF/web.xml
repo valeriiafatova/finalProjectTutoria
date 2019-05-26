@@ -14,6 +14,14 @@
         <servlet-class>com.epam.web.DispatcherServlet</servlet-class>
     </servlet>
 
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.html</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+
+    </jsp-config>
+
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>/app/*</url-pattern>

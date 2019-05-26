@@ -20,14 +20,23 @@ public class LocalizationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String localeSession = (String) httpRequest.getSession().getAttribute(LOCALE);
 
-        if(localeSession == null){
+        setLocale(httpRequest);
+        setBundle(httpRequest);
+
+        filterChain.doFilter(request, response);
+    }
+
+    private void setBundle(HttpServletRequest httpRequest) {
+        if (httpRequest.getSession().getAttribute(BUNDLE) == null) {
+            httpRequest.getSession().setAttribute(BUNDLE, defaultBundle);
+        }
+    }
+
+    private void setLocale(HttpServletRequest httpRequest) {
+        if (httpRequest.getSession().getAttribute(LOCALE) == null) {
             httpRequest.getSession().setAttribute(LOCALE, locale);
         }
-
-        httpRequest.getSession().setAttribute(BUNDLE, defaultBundle);
-        filterChain.doFilter(request, response);
     }
 
     @Override
